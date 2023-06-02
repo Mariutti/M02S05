@@ -1,28 +1,37 @@
 package entidades;
 
+import java.time.Duration;
 import java.util.Date;
 
 public class Reserva {
-    private String numero;
+    private String quarto;
     private Date dataEntrada;
     private Date dataSaida;
 
-    public Reserva(String numero, Date dataEntrada) {
-        this.numero = numero;
+    public Reserva() {
+    }
+
+    public Reserva(String quarto, Date dataEntrada) {
+        this.quarto = quarto;
         this.dataEntrada = dataEntrada;
     }
-    public Reserva(String numero, Date dataEntrada, Date dataSaida) {
-        this.numero = numero;
+    public Reserva(String quarto, Date dataEntrada, Date dataSaida) {
+        this.quarto = quarto;
         this.dataEntrada = dataEntrada;
         this.dataSaida = dataSaida;
     }
 
-    public String getNumero() {
-        return numero;
+    public int getTotalDias(){
+        Duration totTempo = Duration.between( dataEntrada.toInstant(), dataSaida.toInstant());
+        return (int) totTempo.toDays();
     }
 
-    public void setNumero(String numero) {
-        this.numero = numero;
+    public String getQuarto() {
+        return quarto;
+    }
+
+    public void setQuarto(String quarto) {
+        this.quarto = quarto;
     }
 
     public Date getDataEntrada() {
